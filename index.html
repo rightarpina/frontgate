@@ -1,21 +1,450 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Architect | Enterprise Security Solutions</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            background-color: #f0f0f0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0aff9b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: #0aff9b;
+            color: #333;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a2e;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 60px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0aff9b;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 60px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-header h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            color: #555;
+        }
+
+        .project-body p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0aff9b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is my first GitHub Pages website!</p>
-    <p>I created this using my frontend repository.</p>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>🔐 Security Architect</h1>
+        <p>Enterprise Security Solutions | Cloud Security | DevSecOps</p>
+        <a href="#projects" class="cta-button">View My Work</a>
+        <a href="https://github.com/yourusername" class="cta-button">GitHub Profile</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Enterprise Security Expert</h3>
+                <p>I'm a security architect with deep expertise in enterprise security, cloud infrastructure, and modern security practices.</p>
+                <p>Specializing in implementing secure architectures, compliance frameworks, and building security-first solutions for enterprise organizations.</p>
+                <p>Passionate about staying ahead of emerging threats and helping organizations build resilient, secure systems.</p>
+            </div>
+            <div class="about-text">
+                <h3>What I Do</h3>
+                <p>✓ Enterprise Architecture & Security Design</p>
+                <p>✓ Cloud Security (GCP, Azure, AWS)</p>
+                <p>✓ DevSecOps & CI/CD Security</p>
+                <p>✓ Compliance & Risk Management</p>
+                <p>✓ Security Framework Implementation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🏗️ Architecture</h3>
+                <ul>
+                    <li>Enterprise Security Design</li>
+                    <li>Cloud Architecture</li>
+                    <li>API Security</li>
+                    <li>Network Security</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>☁️ Cloud Platforms</h3>
+                <ul>
+                    <li>Google Cloud Platform (GCP)</li>
+                    <li>Microsoft Azure</li>
+                    <li>Cloud Security Posture</li>
+                    <li>Infrastructure as Code</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>🔒 Security Domains</h3>
+                <ul>
+                    <li>Identity & Access Management</li>
+                    <li>Application Security</li>
+                    <li>Data Protection</li>
+                    <li>Incident Response</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>📋 Compliance</h3>
+                <ul>
+                    <li>ISO 27001 / 42001</li>
+                    <li>NIST Framework</li>
+                    <li>GRC Automation</li>
+                    <li>Risk Management</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>🛠️ Tools & Technologies</h3>
+                <ul>
+                    <li>GitHub, GitLab</li>
+                    <li>Kubernetes, Docker</li>
+                    <li>Terraform, IaC</li>
+                    <li>Security Scanners</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>💻 DevSecOps</h3>
+                <ul>
+                    <li>CI/CD Security</li>
+                    <li>SAST/DAST Tools</li>
+                    <li>Container Security</li>
+                    <li>Supply Chain Security</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Project 1</h3>
+                    <p>Enterprise Security Platform</p>
+                </div>
+                <div class="project-body">
+                    <p>A comprehensive security solution built with modern technologies for enterprise-scale deployments.</p>
+                    <a href="https://github.com/yourusername/project1" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Project 2</h3>
+                    <p>Cloud Security Architecture</p>
+                </div>
+                <div class="project-body">
+                    <p>Design and implementation of secure cloud infrastructure with compliance automation.</p>
+                    <a href="https://github.com/yourusername/project2" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Project 3</h3>
+                    <p>DevSecOps Pipeline</p>
+                </div>
+                <div class="project-body">
+                    <p>Automated security controls integrated into CI/CD pipelines for rapid, secure deployments.</p>
+                    <a href="https://github.com/yourusername/project3" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="projects.html" class="cta-button">View All Projects</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="projects" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #555;">
+                Interested in collaborating? Let's connect!
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Security Architect. All rights reserved.</p>
+        <p>Built with passion for cybersecurity excellence.</p>
+    </footer>
 </body>
 </html>
